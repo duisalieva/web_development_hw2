@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rate Mort</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</head>
+<body>
+  <header class="site-header">mort fun club</header>
+
+  <main class="content">
+    <h1>Rate Mort</h1>
+
+    <img class="mort-image"
+         src="{{ url_for('static', filename=mort_image) }}"
+         alt="Mort">
+
+    <form id="rating-form">
+      <fieldset>
+        <legend>How much do you love this face?</legend>
+
+        <div class="rating-options">
+          {% for rating in range(1, 11) %}
+          <label class="rating-option">
+            <input type="radio" name="rating" value="{{ rating }}" required>
+            <span>{{ rating }}</span>
+          </label>
+          {% endfor %}
+        </div>
+      </fieldset>
+
+      <button id="submit-rating" type="submit">Submit Rating</button>
+    </form>
+
+    <p id="reaction" role="status" aria-live="polite" hidden></p>
+  </main>
+</body>
+</html>
